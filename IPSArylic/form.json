@@ -1,0 +1,9 @@
+{
+    "elements": [
+		{ "name": "IPAddress",                 "type": "ValidationTextBox", "caption": "IP-Address/Host" },
+		{ "name": "ConfigTimer",               "type": "NumberSpinner",     "caption": "Config Timer" },
+		{ "name": "RefreshTimer",              "type": "NumberSpinner",     "caption": "Refresh Timer" }
+    ],
+    "actions": [],
+    "status": []
+}

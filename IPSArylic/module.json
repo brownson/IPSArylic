@@ -1,0 +1,12 @@
+{
+    "id": "{719890B3-3697-C84B-3F6A-20695BAE91E9}",
+    "name": "IPSArylic",
+    "type": 3,
+    "vendor": "Brownson",
+    "aliases": ["IPSArylic"],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "ARY",
+    "url": ""
+}
