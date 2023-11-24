@@ -136,14 +136,22 @@ class IPSArylic extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-	protected function hexToStr($hex)
+    function hexToStr($hex)
 	{
-		$string='';
-		for ($i=0; $i < strlen($hex)-1; $i+=2){
-			$string .= chr(hexdec($hex[$i].$hex[$i+1]));
-		}
-		return $string;
+        if ($hex == 'unknown') {
+            return '';
+        }
+        try {
+            $string='';
+            for ($i=0; $i < strlen($hex)-1; $i+=2){
+                $string .= @chr(hexdec($hex[$i].$hex[$i+1]));
+            }
+            return $string;
+        } catch (Throwable $e) {
+           return $e->getMessage();
+        }
 	}
+
 
 	// -------------------------------------------------------------------------
 	protected function executeSoapRequest($sub, $srv, $act, $msg) {
