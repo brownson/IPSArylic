@@ -40,7 +40,7 @@ class IPSArylic extends IPSModule
 			Array(3, "stop",       "", -1),
 			Array(4, "next",       "", -1),
 			Array(5, "load",       "", -1) ));
-		$this->RegisterProfileIntegerEx("Preset.ARYLIC", "Information", "", "",   Array( 
+		$this->RegisterProfileIntegerEx("Preset.ARYLIC.".$this->InstanceID, "Information", "", "",   Array( 
 			Array(1, "Preset 1",   "", -1),
 			Array(2, "Preset 2",   "", -1),
 			Array(3, "Preset 3",   "", -1),
@@ -62,7 +62,7 @@ class IPSArylic extends IPSModule
 		$this->EnableAction("Volume");
 		$this->RegisterVariableInteger("Mute","Mute", "Switch.ARYLIC", 30);
         $this->EnableAction("Mute");
-		$this->RegisterVariableInteger("Preset","Preset", "Preset.ARYLIC", 40);
+		$this->RegisterVariableInteger("Preset","Preset", "Preset.ARYLIC.".$this->InstanceID, 40);
         $this->EnableAction("Preset");
 
 		$this->RegisterVariableString("Title", "Title", "", 100);
@@ -136,7 +136,7 @@ class IPSArylic extends IPSModule
 	}
 
 	// -------------------------------------------------------------------------
-    function hexToStr($hex)
+    protected function hexToStr($hex)
 	{
         if ($hex == 'unknown') {
             return '';
@@ -303,13 +303,12 @@ class IPSArylic extends IPSModule
             if (count($xmlName) > 0) {
                 $name = explode('_#', (string)$xmlName[0])[0];
                 //echo ''.$i.' --> '.$name.PHP_EOL;
-				IPS_SetVariableProfileAssociation('Preset.ARYLIC', $i, $name, '', -1);
+				IPS_SetVariableProfileAssociation('Preset.ARYLIC.'.$this->InstanceID, $i, $name, '', -1);
             } else {
                 //echo ''.$i.' --> '.PHP_EOL;
-				IPS_SetVariableProfileAssociation('Preset.ARYLIC', $i, 'Preset '.$i, '', -1);
+				IPS_SetVariableProfileAssociation('Preset.ARYLIC.'.$this->InstanceID, $i, 'Preset '.$i, '', -1);
             }
-        }
-       
+        }    
     }
 
 	// -------------------------------------------------------------------------
@@ -403,7 +402,6 @@ class IPSArylic extends IPSModule
         IPS_SetVariableProfileIcon($Name, $Icon);
         IPS_SetVariableProfileText($Name, $Prefix, $Suffix);
         IPS_SetVariableProfileValues($Name, $MinValue, $MaxValue, $StepSize);
-        
     }
     
  	// -------------------------------------------------------------------------
@@ -420,7 +418,8 @@ class IPSArylic extends IPSModule
         
         foreach($Associations as $Association) {
             IPS_SetVariableProfileAssociation($Name, $Association[0], $Association[1], $Association[2], $Association[3]);
-        }
-        
+        }     
     }
 }
+
+

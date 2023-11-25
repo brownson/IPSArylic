@@ -4,6 +4,8 @@
 		{ "name": "ConfigTimer",               "type": "NumberSpinner",     "caption": "Config Timer" },
 		{ "name": "RefreshTimer",              "type": "NumberSpinner",     "caption": "Refresh Timer" }
     ],
-    "actions": [],
+    "actions": [
+        {  "type": "TestCenter" },
+        {  "type": "Button",       "caption": "Sync Config",   "onClick": "ARY_RefreshConfig($id);" }],
     "status": []
 }
