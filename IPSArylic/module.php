@@ -74,7 +74,7 @@ class IPSArylic extends IPSModule
 
 		$this->SetTimerInterval('RefreshTimer', $this->ReadPropertyInteger('RefreshTimer') * 1000);
 		$this->SetTimerInterval('ConfigTimer', $this->ReadPropertyInteger('ConfigTimer') * 1000);
-		
+
 	}
 
 	// -------------------------------------------------------------------------
@@ -370,7 +370,11 @@ class IPSArylic extends IPSModule
 
 	// -------------------------------------------------------------------------
 	public function Play() {
-		$this->sendAPIRequest('setPlayerCmd:', 'play');
+        if ($this->GetValue('PlayingUri') == '') {
+            $this->SetPreset(1);
+        } else {
+            $this->sendAPIRequest('setPlayerCmd:', 'play');
+        }
 	}
 	
 	// -------------------------------------------------------------------------
